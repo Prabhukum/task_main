@@ -16,7 +16,7 @@
 
                    <!-- Full screen modal -->
                         <div class="row justify-content-center" >
-                            <img src="{{asset('image/ffff.png')}}" style="background:fit;" alt="image is not found">
+                            {{-- <img src="{{asset('image/ffff.png')}}" style="background:fit;" alt="image is not found"> --}}
                         </div>
                 </div>
             </div>
