@@ -21,3 +21,7 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('countries',[AuthController::class,'getCountries'])->name('countries');
+Route::get('states',[AuthController::class,'getStates'])->name('states');
+Route::get('cities',[AuthController::class,'getCities'])->name('cities');

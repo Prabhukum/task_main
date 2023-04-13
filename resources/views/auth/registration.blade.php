@@ -118,32 +118,32 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="Country" class="col-md-4 col-form-label text-md-right">Country</label>
+                                <label for="Address" class="col-md-4 col-form-label text-md-right">Country</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="Country" class="form-control" name="Country" required>
-                                    @if ($errors->has('Country'))
-                                    <span class="text-danger">{{ $errors->first('Country') }}</span>
-                                    @endif
+                                   <select name="country" class="form-control" name="country" id="country">
+                                        <option selected disabled>Select country</option>
+                                         @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        @endforeach
+                                        </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" >
+
+                                <label for="Address" class="col-md-4 col-form-label text-md-right">State</label>
+                                <div class="col-md-6">
+                                    <select name ="state" class="form-control" name="state" id="state">
+                                    </select>
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="State" class="col-md-4 col-form-label text-md-right">State</label>
+                                <label for="Address" class="col-md-4 col-form-label text-md-right">City</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="State" class="form-control" name="State" required>
-                                    @if ($errors->has('State'))
-                                    <span class="text-danger">{{ $errors->first('State') }}</span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="City" class="col-md-4 col-form-label text-md-right">City</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="City" class="form-control" name="City" required>
-                                    @if ($errors->has('City'))
-                                    <span class="text-danger">{{ $errors->first('City') }}</span>
-                                    @endif
+                                    <select name ="city" class="form-control"  name="city" id="city">
+                                    </select>
                                 </div>
                             </div>
                     </div>
@@ -204,6 +204,39 @@
     var onloadCallback = function() {
     alert("grecaptcha is ready!");
   };
+ $(document).ready(function () {
+ $('#country').on('change', function () {
+  var countryId = this.value;
+   $('#state').html('');
+   $.ajax({
+      url: '{{ route('states') }}?country_id='+countryId,
+      type: 'get',
+      success: function (res) {
+ $('#state').html('<option value="">Select State</option>');
+ $.each(res, function (key, value) {
+    $('#state').append('<option value="' + value
+       .id + '">' + value.name + '</option>');
+ });
+ $('#city').html('<option value="">Select City</option>');
+      }
+   });
+        });
+         $('#state').on('change', function () {
+   var stateId = this.value;
+   $('#city').html('');
+   $.ajax({
+      url: '{{ route('cities') }}?state_id='+stateId,
+      type: 'get',
+      success: function (res) {
+ $('#city').html('<option value="">Select City</option>');
+ $.each(res, function (key, value) {
+    $('#city').append('<option value="' + value
+       .id + '">' + value.name + '</option>');
+ });
+      }
+   });
+         });
+      });
 </script>
 
 
