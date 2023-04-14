@@ -38,17 +38,14 @@ return view('auth.registration',['countries'=>$countries]);
 
 }
  public function getCountries(){
-
-   $countries = DB::table('countries')->get();
-
-   return $countries;
+$countries = DB::table('countries')->get();
+return $countries;
 
  }
 public function getStates(Request $request){
 
-   $states = DB::table('states')->where('country_id',$request->country_id)->get();
-
-   if(count($states)>0){
+ $states = DB::table('states')->where('country_id',$request->country_id)->get();
+ if(count($states)>0){
 
 
  return response()->json($states);
@@ -58,8 +55,7 @@ public function getStates(Request $request){
  }
 
  public function getCities(Request $request){
-
-   $cities = DB::table('cities')->where('state_id',$request->state_id)->get();
+ $cities = DB::table('cities')->where('state_id',$request->state_id)->get();
 
 
 
