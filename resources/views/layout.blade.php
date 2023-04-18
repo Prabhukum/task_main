@@ -21,11 +21,15 @@
             line-height: 1.6;
             color: #212529;
             text-align: left;
-            background-color: #777777;
+
+            background-color: #f9f9fb;
+            background-image: url("{{asset('image/gray.jpg')}}");
+
         }
         .navbar-laravel
         {
             box-shadow: 0 2px 4px rgba(0,0,0,.04);
+            
         }
         .navbar-brand , .nav-link, .my-form, .login-form
         {

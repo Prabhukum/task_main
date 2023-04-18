@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,6 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('countries',[AuthController::class,'getCountries'])->name('countries');
 Route::get('states',[AuthController::class,'getStates'])->name('states');
 Route::get('cities',[AuthController::class,'getCities'])->name('cities');
+
+Route::resource('/contact', ContactController::class);
+
