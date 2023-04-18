@@ -27,10 +27,5 @@ Route::get('countries',[AuthController::class,'getCountries'])->name('countries'
 Route::get('states',[AuthController::class,'getStates'])->name('states');
 Route::get('cities',[AuthController::class,'getCities'])->name('cities');
 
-
 Route::resource('/contact', ContactController::class);
-
-
-
-
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Session;
+use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use Hash;
 use DB;
@@ -24,7 +25,9 @@ class AuthController extends Controller
     }
 
     public function registration()
+
     {
+
         $countries= $this->getCountries();
         return view('auth.registration',['countries'=>$countries]);
     }
@@ -51,6 +54,7 @@ class AuthController extends Controller
     }
 
     public function postLogin(Request $request)
+
     {
         $request->validate([
             'email' => 'required',
@@ -59,12 +63,15 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+
             return redirect()->intended('/contact')
                         ->withSuccess('You have Successfully logged In');
 
+
+
         }
 
-            return redirect('login')->with('failed','Oppes! You have entered invalid credentials');
+            return redirect('login')->with('failed','Opps! You have entered invalid credentials');
     }
 
     public function postRegistration(Request $request)
@@ -117,7 +124,9 @@ class AuthController extends Controller
         $check = $this->create($data);
 
 
+
         return redirect("login")->withSuccess('Great! You have Successfully logged In');
+
     }
 
     public function dashboard()

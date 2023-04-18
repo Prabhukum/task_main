@@ -6,8 +6,8 @@
       <div class="row justify-content-center">
           <div class="col-md-8">
               <div class="card body-image">
-                  <div class="card-header" style="color:cornsilk;background-color: rgba(255, 68, 68, 0.548);font-size:25px"><strong>Login</strong></div>
-                  <div class="card-body" style="color:cornsilk;font-weight:bold;font-size:20px">
+                  <div class="card-header" style="color:rgb(255, 255, 255); background-color: rgb(0 0 0 / 76%); font-size:25px"><strong>Login</strong></div>
+                  <div class="card-body" style="font-weight:bold;font-size:20px">
                     @if(Session::has("failed"))
                     <div class="row justify-content-center">
                         <div class="col-md-8">
